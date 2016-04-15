@@ -45,13 +45,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
+rf.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision.sonar <- tp/(tp+fp)
+rf.precision.sonar <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall.sonar <- tp/(tp+fn)
+rf.ecall.sonar <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
+rf.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 Neural Model
@@ -66,13 +66,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy <- (tp + tn)/(tp+tn+fp+fn)
+nn.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision <- tp/(tp+fp)
+nn.precision.sonar <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall <- tp/(tp+fn)
+nn.recall.sonar <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure <- (2 * tp)/(2*tp + fp + fn)
+nn.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 svmLinear
@@ -86,13 +86,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy <- (tp + tn)/(tp+tn+fp+fn)
+svm.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision <- tp/(tp+fp)
+svm.precision.sonar <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall <- tp/(tp+fn)
+svm.recall.sonar <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure <- (2 * tp)/(2*tp + fp + fn)
+svm.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 NB
@@ -106,13 +106,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy <- (tp + tn)/(tp+tn+fp+fn)
+nb.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision <- tp/(tp+fp)
+nb.precision.sonar <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall <- tp/(tp+fn)
+nb.recall.sonar <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure <- (2 * tp)/(2*tp + fp + fn)
+nb.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 Boosting
@@ -168,13 +168,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+rf.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision.heart <- tp/(tp+fp)
+rf.precision.heart <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall.heart <- tp/(tp+fn)
+rf.recall.heart <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+rf.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 Neural Model
@@ -189,13 +189,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+nn.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision.heart <- tp/(tp+fp)
+nn.precision.heart <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall.heart <- tp/(tp+fn)
+nn.recall.heart <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+nn.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 svmLinear
@@ -209,13 +209,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+svm.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision.heart <- tp/(tp+fp)
+svm.precision.heart <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall.heart <- tp/(tp+fn)
+svm.recall.heart <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+svm.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 NB
@@ -229,13 +229,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+nb.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision.heart <- tp/(tp+fp)
+nb.precision.heart <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall.heart <- tp/(tp+fn)
+nb.recall.heart <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+nb.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 Accuracy Metric
@@ -247,4 +247,67 @@ nnet <- c(0,0,0)
 rforest <- c(0,0,0)
 Acc_df <- data.frame(Name, svm, nb, nnet, rforest)
 #View(Acc_df)
+Acc_df[1,2] = svm.accuracy.sonar
+Acc_df[1,3] = nb.accuracy.sonar
+Acc_df[1,4] = nnet.accuracy.sonar
+Acc_df[1,5] = rf.accuracy.sonar
+Acc_df[3,2] = svm.accuracy.heart
+Acc_df[3,3] = nb.accuracy.heart
+Acc_df[3,4] = nn.accuracy.heart
+Acc_df[3,5] = rf.accuracy.heart
+View(Acc_df)
+```
+Precision Metric
+```{r}
+Name <- c("sonar", "hepatitis", "heart")
+svm <- c(0,0,0)
+nb <- c(0,0,0)
+nnet <- c(0,0,0)
+rforest <- c(0,0,0)
+Pr_df <- data.frame(Name, svm, nb, nnet, rforest)
+
+Pr_df[1,2] = svm.precision.sonar
+Pr_df[1,3] = nb.precision.sonar
+Pr_df[1,4] = nnet.precision.sonar
+Pr_df[1,5] = rf.precision.sonar
+Pr_df[3,2] = svm.precision.heart
+Pr_df[3,3] = nb.precision.heart
+Pr_df[3,4] = nn.precision.heart
+Pr_df[3,5] = rf.precision.heart
+```
+Recall Metric
+```{r}
+Name <- c("sonar", "hepatitis", "heart")
+svm <- c(0,0,0)
+nb <- c(0,0,0)
+nnet <- c(0,0,0)
+rforest <- c(0,0,0)
+Recall_df <- data.frame(Name, svm, nb, nnet, rforest)
+
+Recall_df[1,2] = svm.recall.sonar
+Recall_df[1,3] = nb.recall.sonar
+Recall_df[1,4] = nnet.recall.sonar
+Recall_df[1,5] = rf.recall.sonar
+Recall_df[3,2] = svm.recall.heart
+Recall_df[3,3] = nb.recall.heart
+Recall_df[3,4] = nn.recall.heart
+Recall_df[3,5] = rf.recall.heart
+```
+f Measure Metric
+```{r}
+Name <- c("sonar", "hepatitis", "heart")
+svm <- c(0,0,0)
+nb <- c(0,0,0)
+nnet <- c(0,0,0)
+rforest <- c(0,0,0)
+f_df <- data.frame(Name, svm, nb, nnet, rforest)
+
+f_df[1,2] = svm.fMeasure.sonar
+f_df[1,3] = nb.fMeasure.sonar
+f_df[1,4] = nnet.fMeasure.sonar
+f_df[1,5] = rf.fMeasure.sonar
+f_df[3,2] = svm.fMeasure.heart
+f_df[3,3] = nb.fMeasure.heart
+f_df[3,4] = nn.fMeasure.heart
+f_df[3,5] = rf.fMeasure.heart
 ```

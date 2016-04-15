@@ -146,7 +146,7 @@ hepa.train.data <- hepa.data[train_ind, ]
 hepa.test.data <- hepa.data[-train_ind, ]
 
 heart.data <- read.csv("SPECT.train")
-
+heart.data <- data.frame(lapply(heart.data, factor))
 colnames(heart.data)[1] <- "category"
 
 train_size <- floor(0.85 * nrow(heart.data))
@@ -162,7 +162,7 @@ Random Forest For Heart
 model <- train(heart.train.data[,-1], heart.train.data[,1],
                  method = "rf",
                  trControl = trainControl(method = "repeatedcv", number = 10, repeats =10, summaryFunction = defaultSummary))
-predictions <- predict(model$finalModel, heart.test.data)
+predictions <- predict(model$finalModel, heart.test.data[,-1])
 results.matrix <- confusionMatrix(predictions , heart.test.data$category)
 tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
@@ -203,6 +203,8 @@ svmLinear
 model <- train(heart.train.data[,-1], heart.train.data[,1],
                  method = "svmLinear",
                  trControl = trainControl(method = "repeatedcv", number = 10, repeats =10, summaryFunction = defaultSummary))
+model$trainingData$.outcome <- as.factor(model$trainingData$.outcome)
+
 predictions <- predict(model$finalModel, heart.test.data[,-1])
 results.matrix <- confusionMatrix(predictions, heart.test.data$category)
 tp <- results.matrix$table[1,1]

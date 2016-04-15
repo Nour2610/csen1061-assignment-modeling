@@ -274,6 +274,7 @@ Pr_df[3,2] = svm.precision.heart
 Pr_df[3,3] = nb.precision.heart
 Pr_df[3,4] = nn.precision.heart
 Pr_df[3,5] = rf.precision.heart
+View(Pr_df)
 ```
 Recall Metric
 ```{r}
@@ -292,6 +293,7 @@ Recall_df[3,2] = svm.recall.heart
 Recall_df[3,3] = nb.recall.heart
 Recall_df[3,4] = nn.recall.heart
 Recall_df[3,5] = rf.recall.heart
+View(Recall_df)
 ```
 f Measure Metric
 ```{r}
@@ -310,4 +312,5 @@ f_df[3,2] = svm.fMeasure.heart
 f_df[3,3] = nb.fMeasure.heart
 f_df[3,4] = nn.fMeasure.heart
 f_df[3,5] = rf.fMeasure.heart
+View(f_df)
 ```

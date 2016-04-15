@@ -45,13 +45,13 @@ tp <- results.matrix$table[1,1]
 tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
-accuracy <- (tp + tn)/(tp+tn+fp+fn)
+accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
 cat("Accuracy : " , accuracy)
-precision <- tp/(tp+fp)
+precision.sonar <- tp/(tp+fp)
 cat("Precision : " , precision)
-recall <- tp/(tp+fn)
+recall.sonar <- tp/(tp+fn)
 cat("Recall : " , recall)
-fMeasure <- (2 * tp)/(2*tp + fp + fn)
+fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
 cat("F1 measure : " , fMeasure)
 ```
 Neural Model
@@ -131,7 +131,7 @@ summary(model)
 model_folds_eval <- evaluate_Weka_classifier(model, numFolds = 10)
 model_folds_eval
 ```
-Load Hepatitis Data set
+Load Hepatitis Data set and Heart Data set
 ```{r}
 hepa.data <- read.csv("hepatitis.data", sep = ",")
 #View(hepa.data)
@@ -146,6 +146,7 @@ hepa.train.data <- hepa.data[train_ind, ]
 hepa.test.data <- hepa.data[-train_ind, ]
 
 heart.data <- read.csv("SPECT.train")
+
 colnames(heart.data)[1] <- "category"
 hepa.data[heart.data == "?"] = NA
 train_size <- floor(0.85 * nrow(heart.data))
@@ -156,7 +157,94 @@ train_ind <- sample(seq_len(nrow(heart.data)), size = train_size)
 heart.train.data <- heart.data[train_ind, ]
 heart.test.data <- heart.data[-train_ind, ]
 ```
+Random Forest
+```{r, CACHED = TRUE}
+model <- train(heart.train.data[,-1], heart.train.data[,1],
+                 method = "rf",
+                 trControl = trainControl(method = "repeatedcv", number = 10, repeats =10, summaryFunction = defaultSummary))
+predictions <- predict(model$finalModel, heart.test.data)
+results.matrix <- confusionMatrix(predictions , heart.test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision.heart <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall.heart <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+Neural Model
+
+```{r, CACHED = TRUE}
+model <- train(heart.train.data[,-1], heart.train.data[,1],
+                 method = "nnet",
+                 trControl = trainControl(method = "repeatedcv", number = 10, repeats =10, summaryFunction = defaultSummary))
+predictions.nnet <- predict(model, heart.test.data[,-1])
+results.matrix <- confusionMatrix(predictions.nnet , heart.test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision.heart <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall.heart <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+svmLinear
+```{r, CACHED = TRUE}
+model <- train(heart.train.data[,-1], heart.train.data[,1],
+                 method = "svmLinear",
+                 trControl = trainControl(method = "repeatedcv", number = 10, repeats =10, summaryFunction = defaultSummary))
+predictions <- predict(model$finalModel, heart.test.data[,-1])
+results.matrix <- confusionMatrix(predictions, heart.test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision.heart <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall.heart <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+NB
+```{r, CACHED = TRUE}
+model <- train(heart.train.data[,-1], heart.train.data[,1],
+                 method = "nb",
+                 trControl = trainControl(method = "repeatedcv", number = 10, repeats =10, summaryFunction = defaultSummary))
+predictions <- predict(model$finalModel, heart.test.data[,-1])
+results.matrix <- confusionMatrix(predictions$class , heart.test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision.heart <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall.heart <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
 Accuracy Metric
 ```{r}
-
+Name <- c("sonar", "hepatitis", "heart")
+svm <- c(0,0,0)
+nb <- c(0,0,0)
+nnet <- c(0,0,0)
+rforest <- c(0,0,0)
+Acc_df <- data.frame(Name, svm, nb, nnet, rforest)
+#View(Acc_df)
 ```

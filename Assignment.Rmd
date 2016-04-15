@@ -142,6 +142,21 @@ train_size <- floor(0.85 * nrow(hepa.data))
 set.seed(123)
 train_ind <- sample(seq_len(nrow(hepa.data)), size = train_size)
 
-train.data <- hepa.data[train_ind, ]
-test.data <- hepa.data[-train_ind, ]
+hepa.train.data <- hepa.data[train_ind, ]
+hepa.test.data <- hepa.data[-train_ind, ]
+
+heart.data <- read.csv("SPECT.train")
+colnames(heart.data)[1] <- "category"
+hepa.data[heart.data == "?"] = NA
+train_size <- floor(0.85 * nrow(heart.data))
+
+set.seed(123)
+train_ind <- sample(seq_len(nrow(heart.data)), size = train_size)
+
+heart.train.data <- heart.data[train_ind, ]
+heart.test.data <- heart.data[-train_ind, ]
+```
+Accuracy Metric
+```{r}
+
 ```

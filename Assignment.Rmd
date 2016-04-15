@@ -1,0 +1,147 @@
+---
+title: "Assignment"
+author: "Nouran Attia"
+output: html_document
+---
+
+Loading the data and splitting it into 85% training samples and 15% testing samples
+```{r}
+sonar.data <- read.csv("sonar.all-data", sep = ",")
+names(sonar.data)[ncol(sonar.data)] <- "category"
+train_size <- floor(0.85 * nrow(sonar.data))
+
+set.seed(123)
+train_ind <- sample(seq_len(nrow(sonar.data)), size = train_size)
+
+train.data <- sonar.data[train_ind, ]
+test.data <- sonar.data[-train_ind, ]
+library(RWeka)
+library(caret)
+```
+C4.5 Classifier
+```{r, CACHED = TRUE}
+model.C4.5 <- J48(category~.,data = sonar.data)
+summary(model.C4.5)
+C4.5_folds_eval <- evaluate_Weka_classifier(model.C4.5, numFolds = 10)
+C4.5_folds_eval
+```
+Pruned C4.5 Classifier
+```{r, CACHED = TRUE}
+# pruned C4.5
+model.pruned.C4.5 <- PART(category~.,data = sonar.data)
+# summarize the fit
+summary(model.pruned.C4.5)
+C4.5_pruned_folds_eval <- evaluate_Weka_classifier(model.pruned.C4.5, numFolds = 10)
+C4.5_pruned_folds_eval
+```
+Random Forest
+```{r, CACHED = TRUE}
+model <- train(train.data[,-61], train.data[,61],
+                 method = "rf",
+                 trControl = trainControl(method = "cv", number = 10, summaryFunction = defaultSummary))
+predictions <- predict(model$finalModel, test.data)
+results.matrix <- confusionMatrix(predictions , test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+Neural Model
+
+```{r, CACHED = TRUE}
+model <- train(train.data[,-61], train.data[,61],
+                 method = "nnet",
+                 trControl = trainControl(method = "cv", number = 10, summaryFunction = defaultSummary))
+predictions.nnet <- predict(model, test.data[,-61])
+results.matrix <- confusionMatrix(predictions.nnet , test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+svmLinear
+```{r, CACHED = TRUE}
+model <- train(train.data[,-61], train.data[,61],
+                 method = "svmLinear",
+                 trControl = trainControl(method = "cv", number = 10, summaryFunction = defaultSummary))
+predictions <- predict(model$finalModel, test.data[,-61])
+results.matrix <- confusionMatrix(predictions, test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+NB
+```{r, CACHED = TRUE}
+model <- train(train.data[,-61], train.data[,61],
+                 method = "nb",
+                 trControl = trainControl(method = "cv", number = 10, summaryFunction = defaultSummary))
+predictions <- predict(model$finalModel, test.data[,-61])
+results.matrix <- confusionMatrix(predictions$class , test.data$category)
+tp <- results.matrix$table[1,1]
+tn <- results.matrix$table[2,2]
+fp <- results.matrix$table[1,2]
+fn <- results.matrix$table[2,1]
+accuracy <- (tp + tn)/(tp+tn+fp+fn)
+cat("Accuracy : " , accuracy)
+precision <- tp/(tp+fp)
+cat("Precision : " , precision)
+recall <- tp/(tp+fn)
+cat("Recall : " , recall)
+fMeasure <- (2 * tp)/(2*tp + fp + fn)
+cat("F1 measure : " , fMeasure)
+```
+Boosting
+```{r, CACHED = TRUE}
+model <- AdaBoostM1(category~., data = train.data,
+                 control = Weka_control(W = "J48"))
+summary(model)
+model_folds_eval <- evaluate_Weka_classifier(model, numFolds = 10)
+model_folds_eval
+```
+Bagging
+```{r}
+model <- Bagging(category~., data = train.data,
+                 control = Weka_control(W = "J48"))
+summary(model)
+model_folds_eval <- evaluate_Weka_classifier(model, numFolds = 10)
+model_folds_eval
+```
+Load Hepatitis Data set
+```{r}
+hepa.data <- read.csv("hepatitis.data", sep = ",")
+#View(hepa.data)
+colnames(hepa.data)[1] <- "category"
+hepa.data[hepa.data == "?"] = NA
+train_size <- floor(0.85 * nrow(hepa.data))
+
+set.seed(123)
+train_ind <- sample(seq_len(nrow(hepa.data)), size = train_size)
+
+train.data <- hepa.data[train_ind, ]
+test.data <- hepa.data[-train_ind, ]
+```

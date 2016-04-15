@@ -46,13 +46,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 rf.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , rf.accuracy.sonar)
 rf.precision.sonar <- tp/(tp+fp)
-cat("Precision : " , precision)
-rf.ecall.sonar <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Precision : " , rf.precision.sonar)
+rf.recall.sonar <- tp/(tp+fn)
+cat("Recall : " , rf.recall.sonar)
 rf.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , rf.fMeasure.sonar)
 ```
 Neural Model
 
@@ -67,13 +67,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 nn.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , nn.accuracy.sonar)
 nn.precision.sonar <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , nn.precision.sonar)
 nn.recall.sonar <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , nn.recall.sonar)
 nn.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , nn.fMeasure.sonar)
 ```
 svmLinear
 ```{r, CACHED = TRUE}
@@ -87,13 +87,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 svm.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , svm.accuracy.sonar)
 svm.precision.sonar <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , svm.precision.sonar)
 svm.recall.sonar <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , svm.recall.sonar)
 svm.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , svm.fMeasure.sonar)
 ```
 NB
 ```{r, CACHED = TRUE}
@@ -107,13 +107,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 nb.accuracy.sonar <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , nb.accuracy.sonar)
 nb.precision.sonar <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , nb.precision.sonar)
 nb.recall.sonar <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , nb.recall.sonar)
 nb.fMeasure.sonar <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , nb.fMeasure.sonar)
 ```
 Boosting
 ```{r, CACHED = TRUE}
@@ -169,13 +169,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 rf.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , rf.accuracy.heart)
 rf.precision.heart <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , rf.precision.heart)
 rf.recall.heart <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , rf.recall.heart)
 rf.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , rf.fMeasure.heart)
 ```
 Neural Model
 
@@ -190,13 +190,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 nn.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , nn.accuracy.heart)
 nn.precision.heart <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , nn.precision.heart)
 nn.recall.heart <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , nn.recall.heart)
 nn.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , nn.fMeasure.heart)
 ```
 svmLinear
 ```{r, CACHED = TRUE}
@@ -210,13 +210,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 svm.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , svm.accuracy.heart)
 svm.precision.heart <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , svm.precision.heart)
 svm.recall.heart <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , svm.recall.heart)
 svm.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , svm.fMeasure.heart)
 ```
 NB
 ```{r, CACHED = TRUE}
@@ -230,13 +230,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 nb.accuracy.heart <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , nb.accuracy.heart)
 nb.precision.heart <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , nb.precision.heart)
 nb.recall.heart <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , nb.recall.heart)
 nb.fMeasure.heart <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , nb.fMeasure.heart)
 ```
 Random Forest For hepatitas
 ```{r, CACHED = TRUE}
@@ -250,13 +250,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 rf.accuracy.hepa <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , rf.accuracy.hepa)
 rf.precision.hepa <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , rf.precision.hepa)
 rf.recall.hepa <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , rf.recall.hepa)
 rf.fMeasure.hepa <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , rf.fMeasure.hepa)
 ```
 Neural Model
 
@@ -271,13 +271,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 nn.accuracy.hepa <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , nn.accuracy.hepa)
 nn.precision.hepa <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , nn.precision.hepa)
 nn.recall.hepa <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , nn.recall.hepa)
 nn.fMeasure.hepa <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , nn.fMeasure.hepa)
 ```
 svmLinear
 ```{r, CACHED = TRUE}
@@ -291,13 +291,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 svm.accuracy.hepa <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , svm.accuracy.hepa)
 svm.precision.hepa <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , svm.precision.hepa)
 svm.recall.hepa <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , svm.recall.hepa)
 svm.fMeasure.hepa <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , svm.fMeasure.hepa)
 ```
 NB
 ```{r, CACHED = TRUE}
@@ -311,13 +311,13 @@ tn <- results.matrix$table[2,2]
 fp <- results.matrix$table[1,2]
 fn <- results.matrix$table[2,1]
 nb.accuracy.hepa <- (tp + tn)/(tp+tn+fp+fn)
-cat("Accuracy : " , accuracy)
+cat("Accuracy : " , nb.accuracy.hepa)
 nb.precision.hepa <- tp/(tp+fp)
-cat("Precision : " , precision)
+cat("Precision : " , nb.precision.hepa)
 nb.recall.hepa <- tp/(tp+fn)
-cat("Recall : " , recall)
+cat("Recall : " , nb.recall.hepa)
 nb.fMeasure.hepa <- (2 * tp)/(2*tp + fp + fn)
-cat("F1 measure : " , fMeasure)
+cat("F1 measure : " , nb.fMeasure.hepa)
 ```
 Accuracy Metric
 ```{r}
